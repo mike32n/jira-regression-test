@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Utils {
+public class PageUtils {
 
     final static String BASE_URL = "https://jira.codecool.codecanvas.hu/";
     final static String WEBDRIVER = "webdriver.chrome.driver";
