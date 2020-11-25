@@ -5,29 +5,26 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProjectSettingsPage extends PageObject{
 
-    @FindBy(xpath = "(//a[contains(text(),'Bug')])[2]")
-    private WebElement bug;
-    @FindBy(xpath = "(//a[contains(text(),'Epic')])[2]")
-    private WebElement epic;
-    @FindBy(xpath = "(//a[contains(text(),'Story')])[2]")
+    @FindBy(id = "view_project_issuetypes")
+    private WebElement menuIssueTypes;
+    @FindBy(xpath = "//*[@id='project-config-issuetypes-table']//tr[1]/td[2]//a")
     private WebElement story;
-    @FindBy(xpath = "(//a[contains(text(),'Task')])[2]")
-    private WebElement task;
-    @FindBy(xpath = "(//a[contains(text(),'Sub-task')])[2]")
-    private WebElement subTask;
-    @FindBy(xpath = "//*[@id='project-config-webpanel-summary-issuetypes']/div[2]/div/p/a")
+    @FindBy(id = "project-config-scheme-name")
     private WebElement issueTypeScheme;
 
     public ProjectSettingsPage(WebDriver driver) {
         super(driver);
     }
 
-    public void verifyIssueTypes() {
-        Assert.assertEquals(bug.getText(), "Bug");
-        Assert.assertEquals(epic.getText(), "Epic");
-        Assert.assertEquals(story.getText(), "Story");
-        Assert.assertEquals(subTask.getText(), "Sub-task");
-        Assert.assertEquals(task.getText(), "Task");
+    public void clickOnMenuIssueTypes() {
+        clickOn(menuIssueTypes);
+    }
+
+    public void verifyIssueTypeScheme() {
         Assert.assertEquals(issueTypeScheme.getText(), "PP1: Scrum Issue Type Scheme");
+    }
+
+    public void verifyIssueTypes() {
+        Assert.assertEquals(story.getText(), "Story");
     }
 }

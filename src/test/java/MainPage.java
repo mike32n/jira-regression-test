@@ -4,6 +4,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends PageObject{
 
+    @FindBy(xpath = "//*[@id='content']/div[1]//header/div/div[2]//a")
+    private WebElement projectName;
+
     @FindBy(id = "create_link")
     private WebElement createButton;
 
@@ -30,5 +33,9 @@ public class MainPage extends PageObject{
         clickOn(userIcon);
         clickOn(logoutButton);
         waitForVisibility(logoutMessage);
+    }
+
+    public String getProjectName() {
+        return projectName.getText();
     }
 }
