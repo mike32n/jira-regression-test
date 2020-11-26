@@ -32,6 +32,7 @@ public class PageObject {
     }
 
     protected void clickOn(WebElement webElement) {
+        scrollToView(webElement);
         waitForClickable(webElement);
         webElement.click();
     }

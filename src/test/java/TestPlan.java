@@ -102,7 +102,6 @@ public class TestPlan {
 
         mainPage.navigate(PageUtils.GLASS_URL);
 
-        glassPage.scrollToSchemeTab();
         glassPage.clickOnSchemeTab();
         glassPage.verifyIssueTypeScheme(issueTypeScheme);
     }
