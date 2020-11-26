@@ -31,6 +31,8 @@ pipeline {
                     post {
                         always {
                             junit 'target/surefire-reports/*.xml'
+                            echo 'Cleanup phase: '
+                            cleanWs()
                         }
                     }
                 }
@@ -45,16 +47,18 @@ pipeline {
                     post {
                         always {
                             junit 'target/surefire-reports/*.xml'
+                            echo 'Cleanup phase: '
+                            cleanWs()
                         }
                     }
                 }
             }
         }
     }
-    post {
-        always {
-            echo 'Cleanup phase: '
-            cleanWs()
-        }
-    }
+//     post {
+//         always {
+//             echo 'Cleanup phase: '
+//             cleanWs()
+//         }
+//     }
 }
