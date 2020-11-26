@@ -34,6 +34,8 @@ public class GlassPage extends PageObject{
     private WebElement story;
     @FindBy(xpath = "//*[@id='glass-general-panel']//span[3]")
     private WebElement storyIcon;
+    @FindBy(xpath = "//*[@id='glass-general-schemes-panel']//tr[1]/td[2]")
+    private WebElement issueTypeScheme;
 
     public GlassPage(WebDriver driver) {
         super(driver);
@@ -62,10 +64,6 @@ public class GlassPage extends PageObject{
 
     public void clickOnProjectSettingButton() {
         clickOn(projectSettingButton);
-    }
-
-    public void verifyScheme() {
-        Assert.assertEquals("PP1: Scrum Issue Type Scheme", schemeType.getText());
     }
 
     public void clickOnSchemeTab() {
@@ -102,5 +100,9 @@ public class GlassPage extends PageObject{
     public void verifyInfoBoxProjectName(String projectName) {
         waitForVisibility(infoBoxProjectName);
         Assert.assertEquals(infoBoxProjectName.getText(), projectName);
+    }
+
+    public void verifyIssueTypeScheme(String issueTypeScheme) {
+        Assert.assertEquals(this.issueTypeScheme.getText(), issueTypeScheme);
     }
 }

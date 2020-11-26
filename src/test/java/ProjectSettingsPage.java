@@ -9,7 +9,7 @@ public class ProjectSettingsPage extends PageObject{
     private WebElement menuIssueTypes;
     @FindBy(xpath = "//*[@id='project-config-issuetypes-table']//tr[1]/td[2]//a")
     private WebElement story;
-    @FindBy(id = "project-config-scheme-name")
+    @FindBy(xpath = "//*[@id='project-config-webpanel-summary-issuetypes']//p/a")
     private WebElement issueTypeScheme;
 
     public ProjectSettingsPage(WebDriver driver) {
@@ -20,11 +20,11 @@ public class ProjectSettingsPage extends PageObject{
         clickOn(menuIssueTypes);
     }
 
-    public void verifyIssueTypeScheme() {
-        Assert.assertEquals(issueTypeScheme.getText(), "PP1: Scrum Issue Type Scheme");
-    }
-
     public void verifyIssueTypes() {
         Assert.assertEquals(story.getText(), "Story");
+    }
+
+    public String getIssueTypeScheme() {
+        return issueTypeScheme.getText();
     }
 }

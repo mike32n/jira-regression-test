@@ -67,23 +67,17 @@ public class TestPlan {
         glassPage.verifyInfoBoxProjectName(projectName);
     }
 
-    @Test(testName = "Issue Type Schemes")
+    @Test(testName = "Issue Type Scheme")
     public void issueTypeSchemes() {
+        String issueTypeScheme;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
 
-        projectSettingsPage.clickOnMenuIssueTypes();
-        projectSettingsPage.verifyIssueTypeScheme();
-        projectSettingsPage.verifyIssueTypes();
+        issueTypeScheme = projectSettingsPage.getIssueTypeScheme();
 
         mainPage.navigate(PageUtils.GLASS_URL);
 
-        glassPage.verifyIssueIcon();
-
         glassPage.clickOnSchemeTab();
-        glassPage.verifyScheme();
-
-        glassPage.clickOnIssueTypeDropdown();
-        glassPage.verifyIssueTypes();
+        glassPage.verifyIssueTypeScheme(issueTypeScheme);
     }
 
     @AfterSuite
