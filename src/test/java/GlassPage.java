@@ -83,27 +83,26 @@ public class GlassPage extends PageObject{
     }
 
     public void verifyHeaderLinkName(String projectName) {
-        clickOn(headerLink);
-        Assert.assertEquals(headerLink.getAttribute("innerHTML"), projectName);
+        waitForVisibility(headerLink);
+        Assert.assertEquals(headerLink.getText(), projectName);
     }
 
     public void verifyHeaderName(String projectName) {
-        clickOn(projectTitle);
+        waitForVisibility(projectTitle);
         Assert.assertTrue(projectTitle.getText().startsWith(projectName));
     }
 
     public void verifyProjectName(String projectName) {
-        clickOn(summaryProjectName);
+        waitForVisibility(summaryProjectName);
         Assert.assertEquals(summaryProjectName.getText(), projectName);
     }
 
     public void verifyInfoBoxProjectName(String projectName) {
-        clickOn(infoBoxProjectName);
+        waitForVisibility(infoBoxProjectName);
         Assert.assertEquals(infoBoxProjectName.getText(), projectName);
     }
 
     public void verifyIssueTypeScheme(String issueTypeScheme) {
-        clickOn(this.issueTypeScheme);
         Assert.assertEquals(this.issueTypeScheme.getText(), issueTypeScheme);
     }
 }
