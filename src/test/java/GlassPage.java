@@ -24,7 +24,7 @@ public class GlassPage extends PageObject{
     private WebElement sideBarComponentIcon;
     @FindBy(xpath = "//*[@id='content']/div[1]/div/div[2]/a[1]")
     private WebElement projectSettingButton;
-    @FindBy(id = "aui-uid-3")
+    @FindBy(xpath = "//*[@id='aui-uid-3']")
     private WebElement schemeTab;
     @FindBy(xpath = "//div[@id='glass-general-schemes-panel']/div/table/tbody/tr/td[2]")
     private WebElement schemeType;
