@@ -32,8 +32,8 @@ public class PageObject {
     }
 
     protected void clickOn(WebElement webElement) {
-        scrollToView(webElement);
         waitForClickable(webElement);
+        scrollToView(webElement);
         webElement.click();
     }
 
@@ -43,17 +43,17 @@ public class PageObject {
     }
 
     protected void waitForClickable(WebElement webElement) {
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     protected void waitForVisibility(WebElement webElement) throws Error {
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOf(webElement));
     }
 
     public void acceptAlert() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.alertIsPresent());
+        new WebDriverWait(driver, 15).until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
 }
