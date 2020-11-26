@@ -1,11 +1,37 @@
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class TestPlan {
-    private final WebDriver driver = new ChromeDriver();
+
+    public TestPlan() throws MalformedURLException {
+    }
+
+    private MutableCapabilities setOption() {
+        MutableCapabilities mutableCapabilities;
+
+        if (System.getenv("STAGE_NAME").equals("run with chrome")) {
+            mutableCapabilities = new ChromeOptions();
+        } else {
+            mutableCapabilities = new FirefoxOptions();
+        }
+        return mutableCapabilities;
+    }
+
+    MutableCapabilities mutCapAsOptions = setOption();
+
+
+    private final WebDriver driver = new RemoteWebDriver(new URL("https://selenium:" + PageUtils.password + "@seleniumhub.codecool.codecanvas.hu/wd/hub"), mutCapAsOptions);
+
 
     private LoginPage loginPage = new LoginPage(driver);
     private MainPage mainPage = new MainPage(driver);
