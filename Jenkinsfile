@@ -1,6 +1,11 @@
 pipeline {
     agent any
-     parameters {
+
+    environment {
+            USER_PASS = credentials('user6')
+            }
+
+    parameters {
             string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: both, chrome, firefox')
             string(name: 'chrome', defaultValue: 'chrome', description: 'chrome browser')
             string(name: 'firefox', defaultValue: 'firefox', description: 'firefox browser')
