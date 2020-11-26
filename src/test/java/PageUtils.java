@@ -12,18 +12,10 @@ public class PageUtils {
     static String password;
 
     static {
-        try {
-            username = ReadLoginProperties.getUsername();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        username = ReadLoginProperties.getUsername();
     }
 
     static {
-        try {
-            password = ReadLoginProperties.getPassword();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        password = ReadLoginProperties.getPassword();
     }
 }

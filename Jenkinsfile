@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-            USER_PASS = credentials('user6')
+            USER_PASS = credentials('03cda295-2a33-474f-9f01-0488a8316231')
             }
 
     parameters {
@@ -14,6 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build phase: '
+                echo "Credentials ${USER_PASS}"
                 sh 'mvn clean'
             }
         }

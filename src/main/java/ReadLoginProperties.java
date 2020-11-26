@@ -19,10 +19,10 @@ public class ReadLoginProperties {
     }
 
     public static String getUsername() {
-        return System.getenv("USER_PASS_USR");
+        return "user6";
     }
 
     public static String getPassword() {
-        return System.getenv("USER_PASS_PSW");
+        return System.getenv("USER_PASS");
     }
 }
