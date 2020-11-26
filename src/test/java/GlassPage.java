@@ -66,6 +66,10 @@ public class GlassPage extends PageObject{
         clickOn(projectSettingButton);
     }
 
+    public void scrollToSchemeTab() {
+        scrollToView(schemeTab);
+    }
+
     public void clickOnSchemeTab() {
         clickOn(schemeTab);
     }

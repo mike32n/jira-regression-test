@@ -1,3 +1,4 @@
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -33,6 +34,11 @@ public class PageObject {
     protected void clickOn(WebElement webElement) {
         waitForClickable(webElement);
         webElement.click();
+    }
+
+    protected void scrollToView(WebElement webElement) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     protected void waitForClickable(WebElement webElement) {
