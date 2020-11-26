@@ -14,7 +14,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build phase: '
-                echo "Credentials ${USER_PASS}"
                 sh 'mvn clean'
             }
         }
