@@ -23,6 +23,6 @@ public class ReadLoginProperties {
     }
 
     public static String getPassword() {
-        return System.getenv("USER_PASS");
+        return "CoolCanvas19.";
     }
 }

@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-            USER_PASS = credentials('03cda295-2a33-474f-9f01-0488a8316231')
-            }
+//     environment {
+//             USER_PASS = credentials('03cda295-2a33-474f-9f01-0488a8316231')
+//             }
 
     parameters {
             string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: both, chrome, firefox')
@@ -31,8 +31,6 @@ pipeline {
                     post {
                         always {
                             junit 'target/surefire-reports/*.xml'
-                            echo 'Cleanup phase: '
-                            cleanWs()
                         }
                     }
                 }
@@ -47,18 +45,16 @@ pipeline {
                     post {
                         always {
                             junit 'target/surefire-reports/*.xml'
-                            echo 'Cleanup phase: '
-                            cleanWs()
                         }
                     }
                 }
             }
         }
     }
-//     post {
-//         always {
-//             echo 'Cleanup phase: '
-//             cleanWs()
-//         }
-//     }
+    post {
+        always {
+            echo 'Cleanup phase: '
+            cleanWs()
+        }
+    }
 }
