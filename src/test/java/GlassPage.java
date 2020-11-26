@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GlassPage extends PageObject{
 
-    @FindBy(xpath = "//*[@id='sidebar-page-container']/header/div//li[1]")
+    @FindBy(xpath = "//*[@id='sidebar-page-container']/header/div//li[1]/a")
     private WebElement headerLink;
     @FindBy(xpath = "//*[@id='sidebar-page-container']//h1")
     private WebElement projectTitle;
@@ -84,7 +84,7 @@ public class GlassPage extends PageObject{
 
     public void verifyHeaderLinkName(String projectName) {
         clickOn(headerLink);
-        Assert.assertEquals(headerLink.getText(), projectName);
+        Assert.assertEquals(headerLink.getAttribute("innerHTML"), projectName);
     }
 
     public void verifyHeaderName(String projectName) {
