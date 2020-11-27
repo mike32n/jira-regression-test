@@ -44,8 +44,10 @@ public class TestPlan {
         System.setProperty(PageUtils.WEBDRIVER, PageUtils.CHROME_DRIVER_LOCATION);
         loginPage.start(PageUtils.BASE_URL);
         loginPage.login();
-        if (mainPage.expandSidebar()) {
+        try {
             mainPage.clickOnExpandSidebar();
+        } catch (ElementNotVisibleException ignore) {
+
         }
     }
 
