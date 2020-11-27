@@ -19,6 +19,9 @@ public class MainPage extends PageObject{
     @FindBy(xpath = "//*[@id='content']//strong")
     private WebElement logoutMessage;
 
+    @FindBy(xpath = "//*[@id='content']//a[2]")
+    private WebElement expandSidebar;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -35,8 +38,16 @@ public class MainPage extends PageObject{
         waitForVisibility(logoutMessage);
     }
 
+    public void clickOnExpandSidebar() {
+        clickOn(expandSidebar);
+    }
+
     public String getProjectName() {
         waitForVisibility(projectName);
         return projectName.getText();
+    }
+
+    public boolean expandSidebar() {
+        return expandSidebar.isDisplayed();
     }
 }

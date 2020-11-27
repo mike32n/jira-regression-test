@@ -39,6 +39,8 @@ public class GlassPage extends PageObject{
     private WebElement storyIcon;
     @FindBy(xpath = "//*[@id='glass-general-schemes-panel']//tr[1]/td[2]")
     private WebElement issueTypeScheme;
+    @FindBy(xpath = "//*[@id='content']//a[2]")
+    private WebElement expandSidebar;
 
     public GlassPage(WebDriver driver) {
         super(driver);
@@ -54,6 +56,10 @@ public class GlassPage extends PageObject{
 
     public void clickOnSideBarComponentIcon() {
         clickOn(sideBarComponentIcon);
+    }
+
+    public void clickOnExpandSidebar() {
+        clickOn(expandSidebar);
     }
 
     public void verifyNewVersionName(String name) {

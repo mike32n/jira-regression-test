@@ -1,3 +1,4 @@
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,6 +44,9 @@ public class TestPlan {
         System.setProperty(PageUtils.WEBDRIVER, PageUtils.CHROME_DRIVER_LOCATION);
         loginPage.start(PageUtils.BASE_URL);
         loginPage.login();
+        if (mainPage.expandSidebar()) {
+            mainPage.clickOnExpandSidebar();
+        }
     }
 
     @Test(testName = "Project Link Name")
