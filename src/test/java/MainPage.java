@@ -48,8 +48,16 @@ public class MainPage extends PageObject{
     }
 
     public String getProjectName() {
-        waitForVisibility(projectName);
-        return projectName.getText();
+        String nameText;
+        try {
+            waitForVisibility(projectName);
+            nameText = projectName.getText();
+        } catch (NoSuchElementException ignore) {
+            clickOnExpandSidebar();
+            waitForVisibility(projectName);
+            nameText = projectName.getText();
+        }
+        return nameText;
     }
 
     public boolean expandSidebar() {

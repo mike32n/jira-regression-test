@@ -50,7 +50,6 @@ public class TestPlan {
     public void projectLinkName() {
         String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
-        mainPage.clickOnExpandSidebar();
 
         projectName = mainPage.getProjectName();
 
