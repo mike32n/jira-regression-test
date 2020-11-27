@@ -39,6 +39,8 @@ public class TestPlan {
     private ProjectSettingsPage projectSettingsPage = new ProjectSettingsPage(driver);
     private GlassPage glassPage = new GlassPage(driver);
 
+    private String projectName;
+
     @BeforeSuite
     public void setup() {
         System.setProperty(PageUtils.WEBDRIVER, PageUtils.CHROME_DRIVER_LOCATION);
@@ -48,14 +50,13 @@ public class TestPlan {
         mainPage.resetSidebar();
         loginPage.start(PageUtils.BASE_URL);
         loginPage.login();
+        mainPage.navigate(PageUtils.PROJECT_SETTINGS);
+        projectName = mainPage.getProjectName();
     }
 
     @Test(testName = "Project Link Name")
     public void projectLinkName() {
-        String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
-
-        projectName = mainPage.getProjectName();
 
         mainPage.navigate(PageUtils.GLASS_URL);
 
@@ -64,10 +65,7 @@ public class TestPlan {
 
     @Test(testName = "Project Header Name")
     public void projectHeaderName() {
-        String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
-
-        projectName = mainPage.getProjectName();
 
         mainPage.navigate(PageUtils.GLASS_URL);
 
@@ -76,10 +74,7 @@ public class TestPlan {
 
     @Test(testName = "Project Name In Basic Summary")
     public void projectNameInBasicSummary() {
-        String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
-
-        projectName = mainPage.getProjectName();
 
         mainPage.navigate(PageUtils.GLASS_URL);
 
@@ -88,10 +83,7 @@ public class TestPlan {
 
     @Test(testName = "Project Name Info Box")
     public void projectNameInfoBox() {
-        String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
-
-        projectName = mainPage.getProjectName();
 
         mainPage.navigate(PageUtils.GLASS_URL);
 

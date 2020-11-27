@@ -44,6 +44,7 @@ public class MainPage extends PageObject{
     }
 
     public String getProjectName() {
+        waitForVisibility(projectName);
         return projectName.getText();
 
     }
