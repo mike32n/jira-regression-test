@@ -50,14 +50,17 @@ public class MainPage extends PageObject{
     public String getProjectName() {
         String nameText;
         try {
-            waitForVisibility(projectName);
-            nameText = projectName.getText();
+            clickOnProjectName();
         } catch (NoSuchElementException ignore) {
             clickOnExpandSidebar();
-            waitForVisibility(projectName);
-            nameText = projectName.getText();
+            waitForClickable(projectName);
         }
+        nameText = projectName.getText();
         return nameText;
+    }
+
+    private void clickOnProjectName() {
+        projectName.click();
     }
 
     public boolean expandSidebar() {
