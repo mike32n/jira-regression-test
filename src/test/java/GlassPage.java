@@ -95,7 +95,7 @@ public class GlassPage extends PageObject{
 
     public void verifyProjectName(String projectName) {
         waitForVisibility(summaryProjectName);
-        Assert.assertEquals(summaryProjectName.getText(), projectName);
+        Assert.assertEquals(projectName, summaryProjectName.getText());
     }
 
     public void verifyInfoBoxProjectName(String projectName) {
