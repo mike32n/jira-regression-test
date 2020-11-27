@@ -12,7 +12,7 @@ public class GlassPage extends PageObject{
     private WebElement projectTitle;
     @FindBy(xpath = "//*[@id='glass-general-panel']/div[1]//tr[1]/td[2]")
     private WebElement summaryProjectName;
-    @FindBy(xpath = "//*[@id='glass-general-panel']//p[4]/b")
+    @FindBy(xpath = "//p[4]/b")
     private WebElement infoBoxProjectName;
     @FindBy(xpath = "//*[@id='content']//nav/div/div[2]/ul/li[3]/a")
     private WebElement sideBarShipIcon;
@@ -100,7 +100,7 @@ public class GlassPage extends PageObject{
 
     public void verifyInfoBoxProjectName(String projectName) {
         waitForVisibility(infoBoxProjectName);
-        String text = infoBoxProjectName.getText();
+        String text = infoBoxProjectName.getAttribute("name");
         Assert.assertEquals(projectName, text);
     }
 
