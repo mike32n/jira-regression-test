@@ -40,27 +40,26 @@ public class MainPage extends PageObject{
     }
 
     public void clickOnExpandSidebar() {
-        try {
-            clickOn(expandSidebar);
-        } catch (NoSuchElementException ignore) {
-
-        }
+        clickOn(expandSidebar);
     }
 
     public String getProjectName() {
-        String nameText;
-        try {
-            clickOnProjectName();
-        } catch (NoSuchElementException ignore) {
+
+        if (!projectNameVisible()) {
             clickOnExpandSidebar();
         }
-        waitForClickable(projectName);
-        nameText = projectName.getText();
-        return nameText;
+
+        waitForVisibility(projectName);
+
+        return projectName.getText();
     }
 
     private void clickOnProjectName() {
         clickOn(projectName);
+    }
+
+    private boolean projectNameVisible() {
+        return projectName.isDisplayed();
     }
 
     public boolean expandSidebar() {
