@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GlassPage extends PageObject{
 
-    @FindBy(xpath = "//ol/li/a")
+    @FindBy(xpath = "(//a[contains(@href, '/projects/PP5/issues')])[2]")
     private WebElement headerLink;
     @FindBy(xpath = "//*[@id='sidebar-page-container']//h1")
     private WebElement projectTitle;
