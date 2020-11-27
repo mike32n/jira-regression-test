@@ -85,7 +85,7 @@ public class GlassPage extends PageObject{
     public void verifyHeaderLinkName(String projectName) {
         waitForVisibility(headerLink);
         String text = headerLink.getAttribute("name");
-        Assert.assertEquals(text, projectName);
+        Assert.assertEquals(projectName, text);
     }
 
     public void verifyHeaderName(String projectName) {
@@ -100,8 +100,8 @@ public class GlassPage extends PageObject{
 
     public void verifyInfoBoxProjectName(String projectName) {
         waitForVisibility(infoBoxProjectName);
-        String text = infoBoxProjectName.getAttribute("name");
-        Assert.assertEquals(text, projectName);
+        String text = infoBoxProjectName.getAttribute("innerText");
+        Assert.assertEquals(projectName, text);
     }
 
     public void verifyIssueTypeScheme(String issueTypeScheme) {
