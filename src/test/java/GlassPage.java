@@ -1,8 +1,11 @@
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
 
 public class GlassPage extends PageObject{
 
@@ -84,6 +87,7 @@ public class GlassPage extends PageObject{
 
     public void verifyHeaderLinkName(String projectName) {
         waitForClickable(headerLink);
+        headerLink.sendKeys(Keys.SHIFT);
         String text = headerLink.getAttribute("name");
         Assert.assertEquals(projectName, text);
     }
