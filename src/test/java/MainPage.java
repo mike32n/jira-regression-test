@@ -44,14 +44,8 @@ public class MainPage extends PageObject{
     }
 
     public String getProjectName() {
-
-        if (!projectNameVisible()) {
-            clickOnExpandSidebar();
-        }
-
-        waitForVisibility(projectName);
-
         return projectName.getText();
+
     }
 
     private void clickOnProjectName() {
@@ -64,5 +58,13 @@ public class MainPage extends PageObject{
 
     public boolean expandSidebar() {
         return expandSidebar.isDisplayed();
+    }
+
+    public void resetSidebar() {
+        if (!projectNameVisible()) {
+            clickOnExpandSidebar();
+        }
+        waitForVisibility(projectName);
+        logout();
     }
 }

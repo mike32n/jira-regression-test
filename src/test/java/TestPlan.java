@@ -44,6 +44,10 @@ public class TestPlan {
         System.setProperty(PageUtils.WEBDRIVER, PageUtils.CHROME_DRIVER_LOCATION);
         loginPage.start(PageUtils.BASE_URL);
         loginPage.login();
+        mainPage.navigate(PageUtils.PROJECT_SETTINGS);
+        mainPage.resetSidebar();
+        loginPage.start(PageUtils.BASE_URL);
+        loginPage.login();
     }
 
     @Test(testName = "Project Link Name")

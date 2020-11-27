@@ -11,6 +11,9 @@ public class LoginPage extends PageObject{
     @FindBy(id = "login")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//*[@id='content']//strong")
+    private WebElement logoutMessage;
+
     @FindBy(xpath = "//*[@id='usernameerror']/p")
     private WebElement errorText;
 
