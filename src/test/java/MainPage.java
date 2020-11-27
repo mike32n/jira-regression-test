@@ -53,8 +53,8 @@ public class MainPage extends PageObject{
             clickOnProjectName();
         } catch (NoSuchElementException ignore) {
             clickOnExpandSidebar();
-            waitForClickable(projectName);
         }
+        waitForClickable(projectName);
         nameText = projectName.getText();
         return nameText;
     }
