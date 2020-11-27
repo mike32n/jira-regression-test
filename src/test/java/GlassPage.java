@@ -94,7 +94,7 @@ public class GlassPage extends PageObject{
     public void verifyHeaderLinkName(String projectName) {
         waitForClickable(headerLink);
         headerLink.sendKeys(Keys.SHIFT);
-        String text = headerLink.getAttribute("name");
+        String text = headerLink.getText();
         Assert.assertEquals(projectName, text);
     }
 
