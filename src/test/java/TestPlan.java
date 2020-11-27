@@ -44,17 +44,13 @@ public class TestPlan {
         System.setProperty(PageUtils.WEBDRIVER, PageUtils.CHROME_DRIVER_LOCATION);
         loginPage.start(PageUtils.BASE_URL);
         loginPage.login();
-        try {
-            mainPage.clickOnExpandSidebar();
-        } catch (ElementNotVisibleException ignore) {
-
-        }
     }
 
     @Test(testName = "Project Link Name")
     public void projectLinkName() {
         String projectName;
         mainPage.navigate(PageUtils.PROJECT_SETTINGS);
+        mainPage.clickOnExpandSidebar();
 
         projectName = mainPage.getProjectName();
 
