@@ -60,7 +60,7 @@ public class MainPage extends PageObject{
     }
 
     private void clickOnProjectName() {
-        projectName.click();
+        clickOn(projectName);
     }
 
     public boolean expandSidebar() {
