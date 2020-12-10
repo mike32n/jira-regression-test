@@ -9,14 +9,14 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    withCredentials([(
-                            credentialsId: 'jira-user6-credentials',
-                            passwordVariable: 'pass',
-                            usernameVariable: 'user')]) {
-                                // some block
-                                echo 'Build phase: '
-                                sh 'mvn clean'
-                            }
+                    withCredentials([usernamePassword(
+                        credentialsId: 'jira-user6-credentials',
+                        passwordVariable: 'pass',
+                        usernameVariable: 'user')]) {
+                            // some block
+                            echo 'Build phase: '
+                            sh 'mvn clean'
+                        }
                     }
 
             }
