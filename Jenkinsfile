@@ -15,7 +15,7 @@ pipeline {
                         usernameVariable: 'user')]) {
                             // some block
                             echo 'Build phase: '
-                            sh 'mvn clean -Denv.USER=$user -Denv.PASS=$pass'
+                            sh 'mvn clean -DUSER=$user -DPASS=$pass'
                         }
                     }
 
