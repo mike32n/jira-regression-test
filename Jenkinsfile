@@ -15,7 +15,7 @@ pipeline {
                         usernameVariable: 'user')]) {
                             // some block
                             echo 'Build phase: '
-                            sh 'mvn clean'
+                            sh 'mvn clean -Denv.USER=$user -Denv.PASS=$pass'
                         }
                     }
 
@@ -29,7 +29,7 @@ pipeline {
                     }
                     steps {
                         echo 'Test phase with chrome: '
-                        sh "mvn test -Denv.USER=$user -Denv.PASS=$pass"
+                        sh "mvn test"
                     }
                     post {
                         always {
