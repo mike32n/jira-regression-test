@@ -1,14 +1,9 @@
 pipeline {
     agent any
-
-//     environment {
-//             USER_PASS = credentials('03cda295-2a33-474f-9f01-0488a8316231')
-//             }
-
     parameters {
-            string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: both, chrome, firefox')
-            string(name: 'chrome', defaultValue: 'chrome', description: 'chrome browser')
-            string(name: 'firefox', defaultValue: 'firefox', description: 'firefox browser')
+            string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: Both, Chrome, Firefox')
+            string(name: 'chrome', defaultValue: 'chrome', description: 'Chrome browser')
+            string(name: 'firefox', defaultValue: 'firefox', description: 'Firefox browser')
             }
     stages {
         stage('Build') {
