@@ -29,7 +29,6 @@ pipeline {
                     }
                     steps {
                         echo 'Test phase with chrome: '
-                        echo $user $pass
                         sh "mvn test -Denv.USER=$user -Denv.PASS=$pass"
                     }
                     post {
@@ -44,7 +43,6 @@ pipeline {
                     }
                     steps {
                         echo 'Test phase with firefox: '
-                        echo $user $pass
                         sh "mvn test"
                     }
                     post {
