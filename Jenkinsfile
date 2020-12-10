@@ -8,11 +8,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {withCredentials([
-                    usernamePassword($class: 'UsernamePasswordMultiBinding',
+                script {withCredentials([[$class: 'UsernamePasswordMultiBinding',
                     credentialsId: 'jira-user6-credentials',
                         passwordVariable: 'pass',
-                        usernameVariable: 'user')]) {
+                        usernameVariable: 'user']]) {
                             // some block
                             echo 'Build phase: '
                             sh 'mvn clean'
