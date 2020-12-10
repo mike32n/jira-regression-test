@@ -8,16 +8,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {withCredentials([usernamePassword(
-                    credentialsId: 'jira-user6-credentials',
-                    passwordVariable: 'pass',
-                    usernameVariable: 'user')]) {
-                        // some block
-                        echo 'Build phase: '
-                        sh 'mvn clean -DUSER=$user -DPASS=$pass'
-                    }
-                }
-
+                echo 'Build phase: '
+                sh 'mvn clean'
             }
         }
         stage('Test') {
@@ -31,12 +23,10 @@ pipeline {
                             credentialsId: 'jira-user6-credentials',
                             passwordVariable: 'pass',
                             usernameVariable: 'user')]) {
-                                // some block
                                 echo 'Test phase with chrome: '
                                 sh "mvn test -DUSER=$user -DPASS=$pass"
                             }
                         }
-
                     }
                     post {
                         always {
@@ -49,8 +39,14 @@ pipeline {
                         expression { params.browserToRun == 'both' || params.browserToRun == 'firefox' }
                     }
                     steps {
-                        echo 'Test phase with firefox: '
-                        sh "mvn test"
+                        script {withCredentials([usernamePassword(
+                            credentialsId: 'jira-user6-credentials',
+                            passwordVariable: 'pass',
+                            usernameVariable: 'user')]) {
+                                echo 'Test phase with firefox: '
+                                sh "mvn test -DUSER=$user -DPASS=$pass"
+                            }
+                        }
                     }
                     post {
                         always {
