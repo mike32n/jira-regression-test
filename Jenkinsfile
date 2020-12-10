@@ -8,8 +8,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Build phase: '
-                sh 'mvn clean'
+                script {withCredentials([
+                    usernamePassword($class: 'UsernamePasswordMultiBinding',
+                    credentialsId: 'jira-user6-credentials',
+                        passwordVariable: 'pass',
+                        usernameVariable: 'user')]) {
+                            // some block
+                            echo 'Build phase: '
+                            sh 'mvn clean'
+                        }
+                }
+
             }
         }
         stage('Test') {
@@ -20,7 +29,8 @@ pipeline {
                     }
                     steps {
                         echo 'Test phase with chrome: '
-                        sh "mvn test"
+                        echo $user $pass
+                        sh "mvn test -Denv.USER=$user -Denv.PASS=$pass"
                     }
                     post {
                         always {
@@ -34,6 +44,7 @@ pipeline {
                     }
                     steps {
                         echo 'Test phase with firefox: '
+                        echo $user $pass
                         sh "mvn test"
                     }
                     post {
