@@ -20,7 +20,7 @@ pipeline {
                     }
                     steps {
                         script {withCredentials([usernamePassword(
-                            credentialsId: 'jira-user6-credentials',
+                            credentialsId: 'jira-2-credentials',
                             passwordVariable: 'pass',
                             usernameVariable: 'user')]) {
                                 echo 'Test phase with chrome: '
@@ -40,7 +40,7 @@ pipeline {
                     }
                     steps {
                         script {withCredentials([usernamePassword(
-                            credentialsId: 'jira-user6-credentials',
+                            credentialsId: 'jira-2-credentials',
                             passwordVariable: 'pass',
                             usernameVariable: 'user')]) {
                                 echo 'Test phase with firefox: '
