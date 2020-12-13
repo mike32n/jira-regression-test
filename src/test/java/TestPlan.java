@@ -1,7 +1,5 @@
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -31,7 +29,7 @@ public class TestPlan {
     MutableCapabilities mutCapAsOptions = setOption();
 
 
-    private final WebDriver driver = new RemoteWebDriver(new URL("https://selenium:" + PageUtils.seleniumPass + "@seleniumhub.codecool.codecanvas.hu/wd/hub"), mutCapAsOptions);
+    private final WebDriver driver = new RemoteWebDriver(new URL("https://selenium:" + PageUtils.SELENIUM_PASS + "@seleniumhub.codecool.codecanvas.hu/wd/hub"), mutCapAsOptions);
 
 
     private LoginPage loginPage = new LoginPage(driver);
