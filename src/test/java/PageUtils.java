@@ -11,12 +11,14 @@ public class PageUtils {
     static String seleniumPass;
 
     static {
-        username = ReadLoginProperties.getUsername();
+        username = System.getProperty("USER");
     }
 
     static {
-        password = ReadLoginProperties.getPassword();
+        password = System.getProperty("PASS");
     }
 
-    static {seleniumPass = System.getProperty("SEL_PASS");}
+    static {
+        seleniumPass = System.getProperty("SEL_PASS");
+    }
 }
