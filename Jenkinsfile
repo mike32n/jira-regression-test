@@ -1,9 +1,9 @@
 pipeline {
     agent any
-     parameters {
-            string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: both, chrome, firefox')
-            string(name: 'chrome', defaultValue: 'chrome', description: 'chrome browser')
-            string(name: 'firefox', defaultValue: 'firefox', description: 'firefox browser')
+    parameters {
+            string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: Both, Chrome, Firefox')
+            string(name: 'chrome', defaultValue: 'chrome', description: 'Chrome browser')
+            string(name: 'firefox', defaultValue: 'firefox', description: 'Firefox browser')
             }
     stages {
         stage('Build') {
@@ -19,8 +19,18 @@ pipeline {
                         expression { params.browserToRun == 'both' || params.browserToRun == 'chrome' }
                     }
                     steps {
-                        echo 'Test phase with chrome: '
-                        sh "mvn test"
+                        script {withCredentials([usernamePassword(
+                            credentialsId: 'jira2-admin',
+                            passwordVariable: 'pass',
+                            usernameVariable: 'user'),
+                            usernamePassword(
+                            credentialsId: 'jira-user6-credentials',
+                            passwordVariable: 'sel_pass',
+                            usernameVariable: 'username')]) {
+                                echo 'Test phase with chrome: '
+                                sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
+                            }
+                        }
                     }
                     post {
                         always {
@@ -33,8 +43,18 @@ pipeline {
                         expression { params.browserToRun == 'both' || params.browserToRun == 'firefox' }
                     }
                     steps {
-                        echo 'Test phase with firefox: '
-                        sh "mvn test"
+                        script {withCredentials([usernamePassword(
+                            credentialsId: 'jira2-admin',
+                            passwordVariable: 'pass',
+                            usernameVariable: 'user'),
+                            usernamePassword(
+                            credentialsId: 'jira-user6-credentials',
+                            passwordVariable: 'sel_pass',
+                            usernameVariable: 'username')]) {
+                                echo 'Test phase with firefox: '
+                                sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
+                            }
+                        }
                     }
                     post {
                         always {

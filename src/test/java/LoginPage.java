@@ -11,6 +11,9 @@ public class LoginPage extends PageObject{
     @FindBy(id = "login")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//*[@id='content']//strong")
+    private WebElement logoutMessage;
+
     @FindBy(xpath = "//*[@id='usernameerror']/p")
     private WebElement errorText;
 
@@ -30,7 +33,7 @@ public class LoginPage extends PageObject{
         } catch (Exception ignore) {
         }
         waitForClickable(fieldUsername);
-        fieldUsername.sendKeys(PageUtils.username);
+        fieldUsername.sendKeys(PageUtils.USERNAME);
     }
 
     public void setUsername(String user) {
@@ -44,7 +47,7 @@ public class LoginPage extends PageObject{
 
     public void setPassword() {
         waitForClickable(fieldPassword);
-        fieldPassword.sendKeys(PageUtils.password);
+        fieldPassword.sendKeys(PageUtils.PASSWORD);
     }
 
     public void setPassword(String pass) {

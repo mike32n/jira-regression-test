@@ -1,18 +1,21 @@
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
+
 public class GlassPage extends PageObject{
 
-    @FindBy(xpath = "//*[@id='sidebar-page-container']/header/div//li[1]/a")
+    @FindBy(xpath = "//ol/li/a")
     private WebElement headerLink;
     @FindBy(xpath = "//*[@id='sidebar-page-container']//h1")
     private WebElement projectTitle;
     @FindBy(xpath = "//*[@id='glass-general-panel']/div[1]//tr[1]/td[2]")
     private WebElement summaryProjectName;
-    @FindBy(xpath = "//*[@id='glass-general-panel']//p[4]/b")
+    @FindBy(xpath = "//p[4]/b")
     private WebElement infoBoxProjectName;
     @FindBy(xpath = "//*[@id='content']//nav/div/div[2]/ul/li[3]/a")
     private WebElement sideBarShipIcon;
@@ -24,7 +27,7 @@ public class GlassPage extends PageObject{
     private WebElement sideBarComponentIcon;
     @FindBy(xpath = "//*[@id='content']/div[1]/div/div[2]/a[1]")
     private WebElement projectSettingButton;
-    @FindBy(id = "aui-uid-3")
+    @FindBy(xpath = "//*[@id='glass-general-panel']/div[2]//li[3]")
     private WebElement schemeTab;
     @FindBy(xpath = "//div[@id='glass-general-schemes-panel']/div/table/tbody/tr/td[2]")
     private WebElement schemeType;
@@ -36,6 +39,8 @@ public class GlassPage extends PageObject{
     private WebElement storyIcon;
     @FindBy(xpath = "//*[@id='glass-general-schemes-panel']//tr[1]/td[2]")
     private WebElement issueTypeScheme;
+    @FindBy(xpath = "//*[@id='content']//a[2]")
+    private WebElement expandSidebar;
 
     public GlassPage(WebDriver driver) {
         super(driver);
@@ -51,6 +56,10 @@ public class GlassPage extends PageObject{
 
     public void clickOnSideBarComponentIcon() {
         clickOn(sideBarComponentIcon);
+    }
+
+    public void clickOnExpandSidebar() {
+        clickOn(expandSidebar);
     }
 
     public void verifyNewVersionName(String name) {
@@ -83,8 +92,10 @@ public class GlassPage extends PageObject{
     }
 
     public void verifyHeaderLinkName(String projectName) {
-        waitForVisibility(headerLink);
-        Assert.assertEquals(headerLink.getText(), projectName);
+        waitForClickable(headerLink);
+        headerLink.sendKeys(Keys.SHIFT);
+        String text = headerLink.getText();
+        Assert.assertEquals(projectName, text);
     }
 
     public void verifyHeaderName(String projectName) {
@@ -94,12 +105,13 @@ public class GlassPage extends PageObject{
 
     public void verifyProjectName(String projectName) {
         waitForVisibility(summaryProjectName);
-        Assert.assertEquals(summaryProjectName.getText(), projectName);
+        Assert.assertEquals(projectName, summaryProjectName.getText());
     }
 
     public void verifyInfoBoxProjectName(String projectName) {
         waitForVisibility(infoBoxProjectName);
-        Assert.assertEquals(infoBoxProjectName.getText(), projectName);
+        String text = infoBoxProjectName.getText();
+        Assert.assertEquals(projectName, text);
     }
 
     public void verifyIssueTypeScheme(String issueTypeScheme) {
