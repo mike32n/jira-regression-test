@@ -28,7 +28,6 @@ pipeline {
                             passwordVariable: 'sel_pass',
                             usernameVariable: 'username')]) {
                                 echo 'Test phase with chrome: '
-                                echo user
                                 sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
                             }
                         }
@@ -53,7 +52,6 @@ pipeline {
                             passwordVariable: 'sel_pass',
                             usernameVariable: 'username')]) {
                                 echo 'Test phase with firefox: '
-                                echo pass
                                 sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
                             }
                         }
