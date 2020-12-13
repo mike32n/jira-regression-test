@@ -25,7 +25,7 @@ pipeline {
                             usernameVariable: 'user')]) {
                                 echo 'Test phase with chrome: '
                                 echo user
-                                sh "mvn test -DUSER=$user -DPASS=$pass"
+                                sh "mvn test -X -DUSER=$user -DPASS=$pass"
                             }
                         }
                     }
@@ -46,7 +46,7 @@ pipeline {
                             usernameVariable: 'user')]) {
                                 echo 'Test phase with firefox: '
                                 echo pass
-                                sh "mvn test -DUSER=$user -DPASS=$pass"
+                                sh "mvn test -X -DUSER=$user -DPASS=$pass"
                             }
                         }
                     }
