@@ -46,8 +46,7 @@ pipeline {
                             usernameVariable: 'user'),
                             usernamePassword(
                             credentialsId: 'jira-user6-credentials',
-                            passwordVariable: 'sel_pass',
-                            usernameVariable: 'user')]) {
+                            passwordVariable: 'sel_pass')]) {
                                 echo 'Test phase with firefox: '
                                 echo pass
                                 sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
