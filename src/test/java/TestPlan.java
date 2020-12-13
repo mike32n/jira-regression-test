@@ -31,7 +31,7 @@ public class TestPlan {
     MutableCapabilities mutCapAsOptions = setOption();
 
 
-    private final WebDriver driver = new RemoteWebDriver(new URL("https://selenium:" + PageUtils.password + "@seleniumhub.codecool.codecanvas.hu/wd/hub"), mutCapAsOptions);
+    private final WebDriver driver = new RemoteWebDriver(new URL("https://selenium:" + PageUtils.seleniumPass + "@seleniumhub.codecool.codecanvas.hu/wd/hub"), mutCapAsOptions);
 
 
     private LoginPage loginPage = new LoginPage(driver);

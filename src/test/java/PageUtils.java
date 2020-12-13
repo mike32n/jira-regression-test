@@ -10,6 +10,7 @@ public class PageUtils {
     final static String GLASS_URL = "https://jira.codecool.codecanvas.hu/projects/PP1?selectedItem=com.codecanvas.glass:glass";
     static String username;
     static String password;
+    static String seleniumPass;
 
     static {
         username = ReadLoginProperties.getUsername();
@@ -18,4 +19,6 @@ public class PageUtils {
     static {
         password = ReadLoginProperties.getPassword();
     }
+
+    static {seleniumPass = System.getProperty("SEL_PASS");}
 }

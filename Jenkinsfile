@@ -43,10 +43,14 @@ pipeline {
                         script {withCredentials([usernamePassword(
                             credentialsId: 'jira2-admin',
                             passwordVariable: 'pass',
+                            usernameVariable: 'user'),
+                            usernamePassword(
+                            credentialsId: 'jira-user6-credentials',
+                            passwordVariable: 'sel_pass',
                             usernameVariable: 'user')]) {
                                 echo 'Test phase with firefox: '
                                 echo pass
-                                sh "mvn test -X -DUSER=$user -DPASS=$pass"
+                                sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
                             }
                         }
                     }

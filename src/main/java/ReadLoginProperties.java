@@ -19,12 +19,10 @@ public class ReadLoginProperties {
     }
 
     public static String getUsername() {
-        System.out.println(System.getProperty("USER"));
         return System.getProperty("USER");
     }
 
     public static String getPassword() {
-        System.out.println(System.getProperty("USER"));
         return System.getProperty("PASS");
     }
 }
